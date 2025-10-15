@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+pyjwt
+pika
+cryptography
+pydantic
+pymongo
+python-dotenv
+requests
+pyyaml
+pydantic-settings
+bcrypt
+websockets
+
+
+
