@@ -155,7 +155,13 @@ class WebSocketManager:
                 logger.error(f"Failed to send WebSocket message: {e}")
                 self.disconnect(user_id)
 
+    async def broadcast_to_user(self, user_id: str, message_type: str, data: dict):
+        await self.send_message(user_id, {"type": message_type, "data": data})
+
 ws_manager = WebSocketManager()
+
+async def notify_user(user_id: str, event_type: str, data: dict):
+    await ws_manager.broadcast_to_user(user_id, event_type, data)
 
 def hash_password(password: str) -> str:
     return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
